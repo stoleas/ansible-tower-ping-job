@@ -2,7 +2,7 @@
   tasks:
   - name: Calling ansible api/v2/ping/ endpoint
     uri:
-      url: "{{ ansible_tower_cluster }}/api/v2/ping/"
+      url: "https://{{ ansible_tower_cluster }}/api/v2/ping/"
       method: GET
     register: ping_output
 
