@@ -4,6 +4,7 @@
     uri:
       url: "https://{{ ansible_tower_cluster }}/api/v2/ping/"
       method: GET
+      validate_certs: False
     register: ping_output
 
   - name: Ping values
