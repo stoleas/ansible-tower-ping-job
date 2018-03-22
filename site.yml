@@ -9,4 +9,4 @@
 
   - name: Ping values
     debug:
-      var: ping_output.stdout_lines
+      var: ping_output
