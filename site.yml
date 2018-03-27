@@ -1,5 +1,8 @@
 - hosts: localhost
   tasks:
+  - name: Including Vault Variables
+    include_vars: vault.yml
+
   - name: Calling ansible api/v2/ping/ endpoint
     uri:
       url: "https://{{ ansible_tower_cluster }}/api/v2/ping/"
@@ -12,6 +15,8 @@
       url: "https://{{ ansible_tower_cluster }}/api/v2/config/"
       method: GET
       validate_certs: False
+      user:     "{{ tower_user }}"
+      password: "{{ tower_pass }}"
     register: config_output
 
   - name: API Output
