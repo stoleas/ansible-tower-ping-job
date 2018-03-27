@@ -7,6 +7,16 @@
       validate_certs: False
     register: ping_output
 
-  - name: Ping values
+  - name: Calling Ansible api/v2/config/ endpoint
+    uri:
+      url: "https://{{ ansible_tower_cluster }}/api/v2/config/"
+      method: GET
+      validate_certs: False
+    register: config_output
+
+  - name: API Output
     debug:
-      var: ping_output
+      var: "{{ item }}"
+    with_items:
+      - ping_output
+      - config_output
