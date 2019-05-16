@@ -19,7 +19,8 @@
 
   - name: API Output
     debug:
-      var: "{{ item }}"
+      msg: "{{ item.msg }}: {{ item.var }}"
     with_items:
-      - ping_output
-      - config_output
+      - { var: "{{ ping_output.json.instance_groups }}", msg: "Instance groups" }
+      - { var: "{{ config_output.json.license_info.free_instances }}", msg: "Available Licenses" }
+      - { var: "{{ config_output.json.license_info.instance_count }}", msg: "Total Licenses" }
