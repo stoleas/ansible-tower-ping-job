@@ -14,6 +14,7 @@
       validate_certs: False
       user:     "{{ tower_user }}"
       password: "{{ tower_pass }}"
+      force_basic_auth: True
     register: config_output
 
   - name: API Output
